@@ -1,17 +1,20 @@
 /// <reference path="_reference.ts" />
 import express = require('express');
+import path = require('path');
 
 var app:express.Express = express();
 var port:number = process.env.port || 3000;
 
 //main route
 app.get('/', function (req:express.Request, res:express.Response, next:any) {
-  res.send('Hello Express!');
+  //res.send('Hello Express!');
+  res.sendFile(path.join(__dirname,"Public", "index.html"));
 });
 
 //Route for info page
 app.get('/info', function(req:express.Request, res:express.Response){
-   res.send('Your Custom Info Page goes here')
+   //res.send('Your Custom Info Page goes here')
+   res.sendFile(path.join(__dirname,"Public", "info.html"));
 })
 
 app.listen(port, function(){
